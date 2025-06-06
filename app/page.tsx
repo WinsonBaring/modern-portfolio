@@ -16,6 +16,7 @@ import {
     Award,
     ChevronDown,
     Sparkles,
+    BrainCircuit
 } from "lucide-react"
 import { ParallaxSection } from "@/components/parallax-section"
 import { AnimatedText } from "@/components/animated-text"
@@ -25,6 +26,7 @@ import { MagneticButton } from "@/components/magnetic-button"
 import { ProgressBar } from "@/components/progress-bar"
 import { SideNavigation } from "@/components/side-navigation"
 import { EnhancedCursor } from "@/components/enhanced-cursor"
+import Link from "next/link"
 
 export default function Portfolio() {
     return (
@@ -93,6 +95,7 @@ export default function Portfolio() {
 
                         <ScrollReveal direction="up" delay={1200}>
                             <div className="flex justify-center gap-6">
+                                <Link href={"https://github.com/WinsonBaring"}>
                                 <MagneticButton
                                     size="lg"
                                     className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
@@ -100,6 +103,8 @@ export default function Portfolio() {
                                     <Github className="w-5 h-5 mr-2" />
                                     GitHub
                                 </MagneticButton>
+                                </Link>
+                                <Link href={"https://www.linkedin.com/in/winson-baring-a1329b219/"}>
                                 <MagneticButton
                                     size="lg"
                                     className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
@@ -107,6 +112,8 @@ export default function Portfolio() {
                                     <Linkedin className="w-5 h-5 mr-2" />
                                     LinkedIn
                                 </MagneticButton>
+                                </Link>
+                                <Link href={"mailto:winsonbaring10@gmail.com"}>
                                 <MagneticButton
                                     size="lg"
                                     className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
@@ -114,6 +121,8 @@ export default function Portfolio() {
                                     <Mail className="w-5 h-5 mr-2" />
                                     Email
                                 </MagneticButton>
+                                </Link>
+
                             </div>
                         </ScrollReveal>
                     </div>
@@ -450,9 +459,16 @@ export default function Portfolio() {
                                     delay: 400,
                                 },
                                 {
+                                    icon: BrainCircuit,
+                                    title: ":AI",
+                                    skills: ["ultralytics", "openai", "n8n","vector db"],
+                                    color: "purple",
+                                    delay: 600,
+                                },
+                                {
                                     icon: Cloud,
                                     title: "Cloud & DevOps",
-                                    skills: ["AWS", "Vercel", "CloudFlare", "Nginx", "Docker"],
+                                    skills: ["AWS", "Vercel", "CloudFlare", "Nginx", "Docker","Google","Ultralytics"],
                                     color: "purple",
                                     delay: 600,
                                 },
@@ -556,6 +572,7 @@ export default function Portfolio() {
 
                         <ScrollReveal direction="up" delay={1000}>
                             <div className="flex justify-center gap-4 flex-wrap">
+                                <Link href={"mailto:winsonbaring10@gmail.com"}>
                                 <MagneticButton
                                     size="lg"
                                     className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-xl text-white px-8 py-4"
@@ -563,20 +580,29 @@ export default function Portfolio() {
                                     <Mail className="w-5 h-5 mr-2" />
                                     Send Email
                                 </MagneticButton>
-                                <MagneticButton
-                                    size="lg"
-                                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 px-8 py-4"
+                                </Link>
+                                <Link href={"https://github.com/WinsonBaring/"}>
+                                    <MagneticButton
+                                        size="lg"
+                                        className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 px-8 py-4"
+                                    >
+                                        <Github className="w-5 h-5 mr-2" />
+                                        GitHub
+                                    </MagneticButton><></>
+                                </Link>
+
+                                <Link
+                                    href={"https://www.linkedin.com/in/winson-baring-a1329b219/"}
                                 >
-                                    <Github className="w-5 h-5 mr-2" />
-                                    GitHub
-                                </MagneticButton>
-                                <MagneticButton
-                                    size="lg"
-                                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 px-8 py-4"
-                                >
-                                    <Linkedin className="w-5 h-5 mr-2" />
-                                    LinkedIn
-                                </MagneticButton>
+
+                                    <MagneticButton
+                                        size="lg"
+                                        className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 px-8 py-4"
+                                    >
+                                        <Linkedin className="w-5 h-5 mr-2" />
+                                        LinkedIn
+                                    </MagneticButton>
+                                </Link>
                             </div>
                         </ScrollReveal>
                     </div>
