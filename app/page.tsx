@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { redirect, usePathname } from 'next/navigation'
 import {
     MapPin,
     Mail,
@@ -37,7 +38,7 @@ export default function Portfolio() {
         <div className="w-full m-auto bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-black overflow-x-hidden">
 
             <EnhancedCursor />
-            <div className="p-4 flex items-center justify-end md:hidden">
+            <div className="p-4 flex items-center justify-end md:hidden bg-background color-background">
                 <SidebarTrigger />
             </div>
 
@@ -106,44 +107,40 @@ export default function Portfolio() {
                             </div>
                         </ScrollReveal>
 
-                        <ScrollReveal direction="up" delay={1200}>
-                            <div className="flex flex-col justify-center gap-6 sm:flex-row">
-                                {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6">  */}
-                                <Link href={"https://github.com/WinsonBaring"}>
-                                    <MagneticButton
-                                        size="lg"
-                                        className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
-                                    >
-                                        <Github className="w-5 h-5 mr-2" />
-                                        GitHub
-                                    </MagneticButton>
-                                </Link>
-                                <Link href={"https://www.linkedin.com/in/winson-baring-a1329b219/"}>
-                                    <MagneticButton
-                                        size="lg"
-                                        className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
-                                    >
-                                        <Linkedin className="w-5 h-5 mr-2" />
-                                        LinkedIn
-                                    </MagneticButton>
-                                </Link>
-                                <Link href={"mailto:winsonbaring10@gmail.com"}>
-                                    <MagneticButton
-                                        size="lg"
-                                        className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
-                                    >
-                                        <Mail className="w-5 h-5 mr-2" />
-                                        Email
-                                    </MagneticButton>
-                                </Link>
+                        <div className="flex flex-col justify-center gap-6 sm:flex-row">
+                            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6">  */}
+                            <Link href={"https://github.com/WinsonBaring"}>
+                                <MagneticButton
+                                    size="lg"
+                                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+                                >
+                                    <Github className="w-5 h-5 mr-2" />
+                                    GitHub
+                                </MagneticButton>
+                            </Link>
+                            <Link href={"https://www.linkedin.com/in/winson-baring-a1329b219/"}>
+                                <MagneticButton
+                                    size="lg"
+                                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+                                >
+                                    <Linkedin className="w-5 h-5 mr-2" />
+                                    LinkedIn
+                                </MagneticButton>
+                            </Link>
+                            <Link href={"mailto:winsonbaring10@gmail.com"}>
+                                <MagneticButton
+                                    size="lg"
+                                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+                                >
+                                    <Mail className="w-5 h-5 mr-2" />
+                                    Email
+                                </MagneticButton>
+                            </Link>
 
-                            </div>
-                        </ScrollReveal>
+                        </div>
                     </div>
-
-                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                        <ChevronDown className="w-6 h-6 text-slate-400" />
-                    </div>
+                    {/* <div className="absolute bottom-[3rem] left-1/2 transform-translate-x-1/2 animate-bounce">
+                    </div> */}
                 </section>
 
 
@@ -365,7 +362,8 @@ export default function Portfolio() {
                                     icon: Code,
                                     title: "Techno Dynamic V2",
                                     desc: "AI-Powered Learning Platform",
-                                    detail: "Created dynamic content improvement using linked list chaining and AI tokenizing",
+                                    // detail: "Created dynamic content improvement using linked list chaining and AI tokenizing",
+                                    detail: "Techno-Dynamic-Learning V2 is an enhanced LMS for technopreneurship courses, featuring dynamic content generation and FAQ-based suggestions.",
                                     techs: ["Vite", "AI/LLM", "AWS S3", "Django", "Heroku"],
                                     date: "Feb 2024",
                                     color: "blue",
@@ -377,11 +375,12 @@ export default function Portfolio() {
                                     icon: Smartphone,
                                     title: "Laundirii",
                                     desc: "Online Laundry Service Platform",
-                                    detail: "Created a comprehensive Washer Dashboard with transaction flow and CRUD operations",
-                                    techs: ["Android", "Java", "RecyclerView"],
+                                    detail: "LaunDiri is a comprehensive laundry management application that facilitates the process between clients, couriers, and laundry shops",
+                                    techs: ["Android", "Java", "SQL Lite"],
                                     date: "May 2023",
                                     color: "purple",
                                     github: "https://github.com/jmarcbalbada/laundirii",
+                                    link: "",
                                     delay: 600,
                                 },
                             ].map((project, index) => (
@@ -420,28 +419,30 @@ export default function Portfolio() {
                                             </div>
                                             <div className="flex flex-col gap-4">
 
-                                                <a href={project.link}>
+                                                {(project.link != "") && (
 
                                                     <MagneticButton
                                                         variant="outline"
                                                         size="sm"
                                                         className="w-full border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+                                                        href={project.link}
                                                     >
                                                         <ExternalLink className="w-4 h-4 mr-2" />
                                                         View Project
                                                     </MagneticButton>
-                                                </a>
-                                                <a href={project.github}>
-
+                                                )}
+                                                {(project.github != "") && (
                                                     <MagneticButton
                                                         variant="outline"
                                                         size="sm"
                                                         className="w-full border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+                                                        href={project.github}
                                                     >
                                                         <Github className="w-4 h-4 mr-2" />
                                                         View Source Code
                                                     </MagneticButton>
-                                                </a>
+                                                )}
+
                                             </div>
 
                                         </CardContent>
@@ -500,7 +501,7 @@ export default function Portfolio() {
                                 },
                             ].map((category, index) => (
                                 <ScrollReveal key={index} direction="up" delay={category.delay}>
-                                    <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-105 shadow-2xl group">
+                                    <Card className="h-full w-full flex-col justify-between bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-105 shadow-2xl group">
                                         <CardHeader>
                                             <CardTitle className="flex items-center gap-3 text-lg text-slate-900 dark:text-white">
                                                 <category.icon
@@ -511,8 +512,8 @@ export default function Portfolio() {
                                                 </span>
                                             </CardTitle>
                                         </CardHeader>
-                                        <CardContent>
-                                            <div className="flex flex-wrap gap-2">
+                                        <CardContent className=" flex flex-grow items-center justify-center p-6">
+                                            <div className="flex flex-wrap gap-2 justify-center">
                                                 {category.skills.map((skill, skillIndex) => (
                                                     <Badge
                                                         key={skillIndex}

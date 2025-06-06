@@ -1,17 +1,18 @@
 "use client"
 
 import type React from "react"
-
+import { redirect, usePathname } from 'next/navigation'
 import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 
 interface MagneticButtonProps {
   children: React.ReactNode
   className?: string
+  href?: string
   [key: string]: any
 }
 
-export function MagneticButton({ children, className = "", ...props }: MagneticButtonProps) {
+export function MagneticButton({ children, className = "",href, ...props }: MagneticButtonProps) {
   const ref = useRef<HTMLButtonElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
@@ -31,6 +32,12 @@ export function MagneticButton({ children, className = "", ...props }: MagneticB
   const handleMouseLeave = () => {
     setPosition({ x: 0, y: 0 })
   }
+  const handleClick = (e: React.MouseEvent) => {
+    if (href) {
+      e.preventDefault()
+      window.open(href, "_blank")
+    }
+  }
 
   return (
     <Button
@@ -41,6 +48,7 @@ export function MagneticButton({ children, className = "", ...props }: MagneticB
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
       {...props}
     >
       {children}

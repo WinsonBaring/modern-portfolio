@@ -125,7 +125,7 @@ export function AppSidebar() {
                                         <SidebarMenuButton
                                             asChild
                                             isActive={isActive}
-                                            className="w-full justify-start gap-3 px-3 py-2.5 text-sm font-medium"
+                                            className=" w-full justify-start gap-3 px-3 py-2.5 text-sm font-medium"
                                         >
                                             <a href={`#${item.id}`} className="flex items-center gap-3">
                                                 <span className="text-slate-400 dark:text-slate-600 text-xs">—</span>
