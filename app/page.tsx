@@ -28,20 +28,23 @@ import { SideNavigation } from "@/components/side-navigation"
 import { EnhancedCursor } from "@/components/enhanced-cursor"
 import Link from "next/link"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
+import { AppSidebar } from "@/components/ui/app-sidebar"
+import { SidebarTrigger } from "@/components/ui/sidebar"
+import HomeHeader from "@/components/ui/home-header"
 
 export default function Portfolio() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-black overflow-x-hidden">
-            <ProgressBar />
-            <EnhancedCursor />
-            <SideNavigation />
+        <div className="w-full m-auto bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-black overflow-x-hidden">
 
+            <EnhancedCursor />
+            <SidebarTrigger />
             {/* Main Content with left margin for desktop */}
-            <div className="lg:ml-80">
+            <div className="overflow-hidden w-full ">
+
                 {/* Hero Section */}
-                <section className="min-h-screen flex items-center justify-center px-6 lg:px-12 relative overflow-hidden pt-20 lg:pt-0">
-                    <ParallaxSection speed={0.3} className="absolute inset-0">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 dark:from-blue-500/10 dark:to-purple-600/10" />
+                <section className="w-full flex items-center justify-center px-6 lg:px-12 relative overflow-hidden pt-20 lg:pt-0">
+                    <ParallaxSection speed={0.3} className="">
+                        <div className=" bg-gradient-to-br from-blue-500/5 to-purple-600/5 dark:from-blue-500/10 dark:to-purple-600/10" />
                     </ParallaxSection>
 
                     <div className="container mx-auto max-w-4xl text-center relative z-10">
@@ -96,7 +99,7 @@ export default function Portfolio() {
 
                         <ScrollReveal direction="up" delay={1200}>
                             <div className="flex flex-col justify-center gap-6 sm:flex-row">
-                            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6">  */}
+                                {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6">  */}
                                 <Link href={"https://github.com/WinsonBaring"}>
                                     <MagneticButton
                                         size="lg"
@@ -134,7 +137,7 @@ export default function Portfolio() {
                     </div>
                 </section>
 
-                
+
                 {/* Experience Section */}
                 <section id="about" className="py-20 px-6 lg:px-12 relative">
                     <div className="container mx-auto max-w-4xl relative z-10">
@@ -252,7 +255,7 @@ export default function Portfolio() {
                                                 <Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 mb-2">
                                                     Current
                                                 </Badge>
-                                                <div className="text-slate-600 dark:text-slate-400 text-sm">2021 - Present</div>
+                                                <div className="text-slate-600 dark:text-slate-400 text-sm">feb 2024 - feb 2025</div>
                                             </div>
                                         </div>
                                     </CardHeader>
@@ -314,13 +317,13 @@ export default function Portfolio() {
                                     icon: Code,
                                     title: "Resume AI ",
                                     desc: "AI-Powered Resume Builder",
-                                    detail: "Generate a professional resume instantly using AI",
+                                    detail: "Create professional resumes effortlessly using AI. Transform your work experience into compelling career stories that impress employers.",
                                     techs: ["supabase", "clerk", "next"],
                                     date: "June 2025",
                                     color: "blue",
                                     github: "https://github.com/WinsonBaring/ResumeAI",
                                     link: "https://resume-ai-olive-kappa.vercel.app/",
-                                    image:"",
+                                    image: "",
                                     delay: 200,
 
                                 },
@@ -328,7 +331,7 @@ export default function Portfolio() {
                                     icon: Code,
                                     title: "Rad AI",
                                     desc: "Kidney Stone Detection",
-                                    detail: "Early detection of kidney stone",
+                                    detail: "RadAI is an AI-powered binary classification tool designed to assist in detecting kidney stones in ultrasound images. The model classifies images into two categories: Kidney Stone Detected or Normal Kidney.",
                                     techs: ["google cloud run", "flask", "vercel", "ultralytics", "docker"],
                                     date: "Feb 2025",
                                     color: "blue",
@@ -374,38 +377,40 @@ export default function Portfolio() {
                                 },
                             ].map((project, index) => (
                                 <ScrollReveal key={index} direction="up" delay={project.delay} >
-                                        <Card className="h-full bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-105 shadow-2xl group cursor-pointer">
-                                            <CardHeader>
-                                                <div className="flex items-center justify-between mb-4">
-                                                    <project.icon
-                                                        className={`w-10 h-10 text-${project.color}-600 dark:text-${project.color}-500 group-hover:scale-110 transition-transform duration-300`}
-                                                    />
-                                                    <Badge className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700">
-                                                        {project.date}
+                                    <Card className="flex flex-col justify-between h-full bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-105 shadow-2xl group cursor-pointer">
+                                        <CardHeader>
+                                            <div className="flex items-center justify-between mb-4">
+                                                <project.icon
+                                                    className={`w-10 h-10 text-${project.color}-600 dark:text-${project.color}-500 group-hover:scale-110 transition-transform duration-300`}
+                                                />
+                                                <Badge className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700">
+                                                    {project.date}
+                                                </Badge>
+                                            </div>
+                                            <CardTitle className="text-xl text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                                                {project.title}
+                                            </CardTitle>
+                                            <CardDescription className="text-base text-slate-600 dark:text-slate-400 ">
+                                                {project.desc}
+                                            </CardDescription>
+                                        </CardHeader>
+                                        <CardContent className="justify-between items-between">
+                                            <p className="text-sm text-slate-700 dark:text-slate-300 mb-4 leading-relaxed line-clamp-5">
+                                                {project.detail}
+                                            </p>
+                                            <div className="flex flex-wrap gap-2 mb-4">
+                                                {project.techs.map((tech, techIndex) => (
+                                                    <Badge
+                                                        key={techIndex}
+                                                        variant="secondary"
+                                                        className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300"
+                                                    >
+                                                        {tech}
                                                     </Badge>
-                                                </div>
-                                                <CardTitle className="text-xl text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                                                    {project.title}
-                                                </CardTitle>
-                                                <CardDescription className="text-base text-slate-600 dark:text-slate-400">
-                                                    {project.desc}
-                                                </CardDescription>
-                                            </CardHeader>
-                                            <CardContent>
-                                                <p className="text-sm text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
-                                                    {project.detail}
-                                                </p>
-                                                <div className="flex flex-wrap gap-2 mb-4">
-                                                    {project.techs.map((tech, techIndex) => (
-                                                        <Badge
-                                                            key={techIndex}
-                                                            variant="secondary"
-                                                            className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300"
-                                                        >
-                                                            {tech}
-                                                        </Badge>
-                                                    ))}
-                                                </div>
+                                                ))}
+                                            </div>
+                                            <div className="flex flex-col gap-4">
+
                                                 <a href={project.link}>
 
                                                     <MagneticButton
@@ -428,9 +433,10 @@ export default function Portfolio() {
                                                         View Source Code
                                                     </MagneticButton>
                                                 </a>
+                                            </div>
 
-                                            </CardContent>
-                                        </Card>
+                                        </CardContent>
+                                    </Card>
                                 </ScrollReveal>
                             ))}
                         </div>
