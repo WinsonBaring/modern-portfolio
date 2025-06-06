@@ -27,6 +27,7 @@ import { ProgressBar } from "@/components/progress-bar"
 import { SideNavigation } from "@/components/side-navigation"
 import { EnhancedCursor } from "@/components/enhanced-cursor"
 import Link from "next/link"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 
 export default function Portfolio() {
     return (
@@ -94,33 +95,34 @@ export default function Portfolio() {
                         </ScrollReveal>
 
                         <ScrollReveal direction="up" delay={1200}>
-                            <div className="flex justify-center gap-6">
+                            <div className="flex flex-col justify-center gap-6 sm:flex-row">
+                            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6">  */}
                                 <Link href={"https://github.com/WinsonBaring"}>
-                                <MagneticButton
-                                    size="lg"
-                                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
-                                >
-                                    <Github className="w-5 h-5 mr-2" />
-                                    GitHub
-                                </MagneticButton>
+                                    <MagneticButton
+                                        size="lg"
+                                        className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+                                    >
+                                        <Github className="w-5 h-5 mr-2" />
+                                        GitHub
+                                    </MagneticButton>
                                 </Link>
                                 <Link href={"https://www.linkedin.com/in/winson-baring-a1329b219/"}>
-                                <MagneticButton
-                                    size="lg"
-                                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
-                                >
-                                    <Linkedin className="w-5 h-5 mr-2" />
-                                    LinkedIn
-                                </MagneticButton>
+                                    <MagneticButton
+                                        size="lg"
+                                        className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+                                    >
+                                        <Linkedin className="w-5 h-5 mr-2" />
+                                        LinkedIn
+                                    </MagneticButton>
                                 </Link>
                                 <Link href={"mailto:winsonbaring10@gmail.com"}>
-                                <MagneticButton
-                                    size="lg"
-                                    className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
-                                >
-                                    <Mail className="w-5 h-5 mr-2" />
-                                    Email
-                                </MagneticButton>
+                                    <MagneticButton
+                                        size="lg"
+                                        className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+                                    >
+                                        <Mail className="w-5 h-5 mr-2" />
+                                        Email
+                                    </MagneticButton>
                                 </Link>
 
                             </div>
@@ -132,80 +134,9 @@ export default function Portfolio() {
                     </div>
                 </section>
 
-                {/* About Section */}
-                <section id="about" className="py-20 px-6 lg:px-12 relative">
-                    <ParallaxSection speed={0.2}>
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-500/5 to-purple-600/5 dark:from-blue-500/10 dark:to-purple-600/10 rounded-full blur-3xl" />
-                    </ParallaxSection>
-
-                    <div className="container mx-auto max-w-4xl relative z-10">
-                        <ScrollReveal direction="up">
-                            <h2 className="text-4xl md:text-6xl font-bold mb-16 text-slate-900 dark:text-white">
-                                <AnimatedText text="Work Experience" />
-                            </h2>
-                        </ScrollReveal>
-
-                        <div className="space-y-8">
-                            <ScrollReveal direction="left" delay={200}>
-                                <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
-                                    <CardHeader>
-                                        <div className="flex justify-between items-start mb-4">
-                                            <div>
-                                                <CardTitle className="text-2xl text-slate-900 dark:text-white mb-2">
-                                                    Hatchit Solutions
-                                                </CardTitle>
-                                                <CardDescription className="text-lg font-medium text-blue-600 dark:text-blue-400">
-                                                    Software Developer
-                                                </CardDescription>
-                                            </div>
-                                            <div className="text-right">
-                                                <Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 mb-2">
-                                                    Current
-                                                </Badge>
-                                                <div className="text-slate-600 dark:text-slate-400 text-sm">2021 - Present</div>
-                                            </div>
-                                        </div>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <ScrollReveal direction="up" delay={400}>
-                                            <div className="flex flex-wrap gap-2 mb-6">
-                                                {["NestJS", "NextJS", "Twilio", "OpenAI", "Express", "Ngrok"].map((tech, index) => (
-                                                    <Badge
-                                                        key={index}
-                                                        variant="secondary"
-                                                        className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300 cursor-pointer"
-                                                    >
-                                                        {tech}
-                                                    </Badge>
-                                                ))}
-                                            </div>
-                                        </ScrollReveal>
-
-                                        <ul className="space-y-4 text-slate-700 dark:text-slate-300">
-                                            {[
-                                                "Developed a full-stack RSVP Reservation System using Next.js and Nest.js, integrating Twilio for automated calls and reservations",
-                                                "Implemented dynamic multi-step forms with SSR, Server Actions, and Partial Prerendering for CMS-driven form creation",
-                                                "Built a Retrieval-Augmented Generation (RAG) chatbot using OpenAI APIs for seamless file interaction",
-                                                "Collaborated on policy reports and client communication to ensure business goal alignment",
-                                                "Improved applications by integrating React Query and Zustand for better scalability",
-                                            ].map((item, index) => (
-                                                <ScrollReveal key={index} direction="right" delay={600 + index * 100}>
-                                                    <li className="flex items-start gap-3 hover:translate-x-2 transition-transform duration-300">
-                                                        <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0" />
-                                                        <span>{item}</span>
-                                                    </li>
-                                                </ScrollReveal>
-                                            ))}
-                                        </ul>
-                                    </CardContent>
-                                </Card>
-                            </ScrollReveal>
-                        </div>
-                    </div>
-                </section>
-
+                
                 {/* Experience Section */}
-                <section id="experience" className="py-20 px-6 lg:px-12 relative">
+                <section id="about" className="py-20 px-6 lg:px-12 relative">
                     <div className="container mx-auto max-w-4xl relative z-10">
                         <ScrollReveal direction="up">
                             <h2 className="text-4xl md:text-6xl font-bold mb-16 text-slate-900 dark:text-white">
@@ -291,6 +222,78 @@ export default function Portfolio() {
                         </ScrollReveal>
                     </div>
                 </section>
+                {/* About Section */}
+                <section id="experience" className="py-20 px-6 lg:px-12 relative">
+                    <ParallaxSection speed={0.2}>
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-500/5 to-purple-600/5 dark:from-blue-500/10 dark:to-purple-600/10 rounded-full blur-3xl" />
+                    </ParallaxSection>
+
+                    <div className="container mx-auto max-w-4xl relative z-10">
+                        <ScrollReveal direction="up">
+                            <h2 className="text-4xl md:text-6xl font-bold mb-16 text-slate-900 dark:text-white">
+                                <AnimatedText text="Work Experience" />
+                            </h2>
+                        </ScrollReveal>
+
+                        <div className="space-y-8">
+                            <ScrollReveal direction="left" delay={200}>
+                                <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+                                    <CardHeader>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div>
+                                                <CardTitle className="text-2xl text-slate-900 dark:text-white mb-2">
+                                                    Hatchit Solutions
+                                                </CardTitle>
+                                                <CardDescription className="text-lg font-medium text-blue-600 dark:text-blue-400">
+                                                    Software Developer
+                                                </CardDescription>
+                                            </div>
+                                            <div className="text-right">
+                                                <Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 mb-2">
+                                                    Current
+                                                </Badge>
+                                                <div className="text-slate-600 dark:text-slate-400 text-sm">2021 - Present</div>
+                                            </div>
+                                        </div>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <ScrollReveal direction="up" delay={400}>
+                                            <div className="flex flex-wrap gap-2 mb-6">
+                                                {["NestJS", "NextJS", "Twilio", "OpenAI", "Express", "Ngrok"].map((tech, index) => (
+                                                    <Badge
+                                                        key={index}
+                                                        variant="secondary"
+                                                        className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300 cursor-pointer"
+                                                    >
+                                                        {tech}
+                                                    </Badge>
+                                                ))}
+                                            </div>
+                                        </ScrollReveal>
+
+                                        <ul className="space-y-4 text-slate-700 dark:text-slate-300">
+                                            {[
+                                                "Developed a full-stack RSVP Reservation System using Next.js and Nest.js, integrating Twilio for automated calls and reservations",
+                                                "Implemented dynamic multi-step forms with SSR, Server Actions, and Partial Prerendering for CMS-driven form creation",
+                                                "Built a Retrieval-Augmented Generation (RAG) chatbot using OpenAI APIs for seamless file interaction",
+                                                "Collaborated on policy reports and client communication to ensure business goal alignment",
+                                                "Improved applications by integrating React Query and Zustand for better scalability",
+                                            ].map((item, index) => (
+                                                <ScrollReveal key={index} direction="right" delay={600 + index * 100}>
+                                                    <li className="flex items-start gap-3 hover:translate-x-2 transition-transform duration-300">
+                                                        <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0" />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                </ScrollReveal>
+                                            ))}
+                                        </ul>
+                                    </CardContent>
+                                </Card>
+                            </ScrollReveal>
+                        </div>
+                    </div>
+                </section>
+
 
                 {/* Projects Section */}
                 <section id="projects" className="py-20 px-6 lg:px-12 relative">
@@ -305,7 +308,7 @@ export default function Portfolio() {
                             </h2>
                         </ScrollReveal>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-[100%]">
                             {[
                                 {
                                     icon: Code,
@@ -317,6 +320,7 @@ export default function Portfolio() {
                                     color: "blue",
                                     github: "https://github.com/WinsonBaring/ResumeAI",
                                     link: "https://resume-ai-olive-kappa.vercel.app/",
+                                    image:"",
                                     delay: 200,
 
                                 },
@@ -369,64 +373,64 @@ export default function Portfolio() {
                                     delay: 600,
                                 },
                             ].map((project, index) => (
-                                <ScrollReveal key={index} direction="up" delay={project.delay}>
-                                    <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-105 shadow-2xl group cursor-pointer">
-                                        <CardHeader>
-                                            <div className="flex items-center justify-between mb-4">
-                                                <project.icon
-                                                    className={`w-10 h-10 text-${project.color}-600 dark:text-${project.color}-500 group-hover:scale-110 transition-transform duration-300`}
-                                                />
-                                                <Badge className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700">
-                                                    {project.date}
-                                                </Badge>
-                                            </div>
-                                            <CardTitle className="text-xl text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                                                {project.title}
-                                            </CardTitle>
-                                            <CardDescription className="text-base text-slate-600 dark:text-slate-400">
-                                                {project.desc}
-                                            </CardDescription>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <p className="text-sm text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
-                                                {project.detail}
-                                            </p>
-                                            <div className="flex flex-wrap gap-2 mb-4">
-                                                {project.techs.map((tech, techIndex) => (
-                                                    <Badge
-                                                        key={techIndex}
-                                                        variant="secondary"
-                                                        className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300"
-                                                    >
-                                                        {tech}
+                                <ScrollReveal key={index} direction="up" delay={project.delay} >
+                                        <Card className="h-full bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-105 shadow-2xl group cursor-pointer">
+                                            <CardHeader>
+                                                <div className="flex items-center justify-between mb-4">
+                                                    <project.icon
+                                                        className={`w-10 h-10 text-${project.color}-600 dark:text-${project.color}-500 group-hover:scale-110 transition-transform duration-300`}
+                                                    />
+                                                    <Badge className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700">
+                                                        {project.date}
                                                     </Badge>
-                                                ))}
-                                            </div>
-                                            <a href={project.link}>
+                                                </div>
+                                                <CardTitle className="text-xl text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                                                    {project.title}
+                                                </CardTitle>
+                                                <CardDescription className="text-base text-slate-600 dark:text-slate-400">
+                                                    {project.desc}
+                                                </CardDescription>
+                                            </CardHeader>
+                                            <CardContent>
+                                                <p className="text-sm text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
+                                                    {project.detail}
+                                                </p>
+                                                <div className="flex flex-wrap gap-2 mb-4">
+                                                    {project.techs.map((tech, techIndex) => (
+                                                        <Badge
+                                                            key={techIndex}
+                                                            variant="secondary"
+                                                            className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300"
+                                                        >
+                                                            {tech}
+                                                        </Badge>
+                                                    ))}
+                                                </div>
+                                                <a href={project.link}>
 
-                                                <MagneticButton
-                                                    variant="outline"
-                                                    size="sm"
-                                                    className="w-full border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
-                                                >
-                                                    <ExternalLink className="w-4 h-4 mr-2" />
-                                                    View Project
-                                                </MagneticButton>
-                                            </a>
-                                            <a href={project.github}>
+                                                    <MagneticButton
+                                                        variant="outline"
+                                                        size="sm"
+                                                        className="w-full border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+                                                    >
+                                                        <ExternalLink className="w-4 h-4 mr-2" />
+                                                        View Project
+                                                    </MagneticButton>
+                                                </a>
+                                                <a href={project.github}>
 
-                                                <MagneticButton
-                                                    variant="outline"
-                                                    size="sm"
-                                                    className="w-full border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
-                                                >
-                                                    <Github className="w-4 h-4 mr-2" />
-                                                    View Source Code
-                                                </MagneticButton>
-                                            </a>
+                                                    <MagneticButton
+                                                        variant="outline"
+                                                        size="sm"
+                                                        className="w-full border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+                                                    >
+                                                        <Github className="w-4 h-4 mr-2" />
+                                                        View Source Code
+                                                    </MagneticButton>
+                                                </a>
 
-                                        </CardContent>
-                                    </Card>
+                                            </CardContent>
+                                        </Card>
                                 </ScrollReveal>
                             ))}
                         </div>
@@ -460,15 +464,15 @@ export default function Portfolio() {
                                 },
                                 {
                                     icon: BrainCircuit,
-                                    title: ":AI",
-                                    skills: ["ultralytics", "openai", "n8n","vector db"],
-                                    color: "purple",
+                                    title: "Artificial Intelligence",
+                                    skills: ["ultralytics", "openai", "n8n", "vector db"],
+                                    color: "blue",
                                     delay: 600,
                                 },
                                 {
                                     icon: Cloud,
                                     title: "Cloud & DevOps",
-                                    skills: ["AWS", "Vercel", "CloudFlare", "Nginx", "Docker","Google","Ultralytics"],
+                                    skills: ["AWS", "Vercel", "CloudFlare", "Nginx", "Docker", "Google", "Ultralytics"],
                                     color: "purple",
                                     delay: 600,
                                 },
@@ -573,13 +577,13 @@ export default function Portfolio() {
                         <ScrollReveal direction="up" delay={1000}>
                             <div className="flex justify-center gap-4 flex-wrap">
                                 <Link href={"mailto:winsonbaring10@gmail.com"}>
-                                <MagneticButton
-                                    size="lg"
-                                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-xl text-white px-8 py-4"
-                                >
-                                    <Mail className="w-5 h-5 mr-2" />
-                                    Send Email
-                                </MagneticButton>
+                                    <MagneticButton
+                                        size="lg"
+                                        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-xl text-white px-8 py-4"
+                                    >
+                                        <Mail className="w-5 h-5 mr-2" />
+                                        Send Email
+                                    </MagneticButton>
                                 </Link>
                                 <Link href={"https://github.com/WinsonBaring/"}>
                                     <MagneticButton
