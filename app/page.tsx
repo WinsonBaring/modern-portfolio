@@ -37,7 +37,16 @@ export default function Portfolio() {
         <div className="w-full m-auto bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-black overflow-x-hidden">
 
             <EnhancedCursor />
-            <SidebarTrigger />
+            <div className="p-4 flex items-center justify-end md:hidden">
+                <SidebarTrigger />
+            </div>
+
+            {/* for PC */}
+            <div className="p-4 hidden lg:flex items-center justify-start">
+                <SidebarTrigger />
+            </div>
+
+
             {/* Main Content with left margin for desktop */}
             <div className="overflow-hidden w-full ">
 
@@ -56,7 +65,7 @@ export default function Portfolio() {
                         </ScrollReveal>
 
                         <ScrollReveal direction="up" delay={400}>
-                            <h1 className="text-5xl md:text-8xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
+                            <h1 className="text-4xl md:text-8xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
                                 <AnimatedText text="Winson Baring" className="block" />
                             </h1>
                         </ScrollReveal>
