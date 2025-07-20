@@ -32,6 +32,22 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { AppSidebar } from "@/components/ui/app-sidebar"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import HomeHeader from "@/components/ui/home-header"
+// Import contactList with type
+import hero from "../data/hero";
+import about from "../data/about";
+import experience from "../data/experience";
+import projects from "../data/projects";
+import skills from "../data/skills";
+import contactList from "../data/contact-list";
+
+// Define type for contact if needed
+interface Contact {
+  icon: string;
+  title: string;
+  info: string;
+  color: string;
+  delay: number;
+}
 
 export default function Portfolio() {
     return (
@@ -67,14 +83,14 @@ export default function Portfolio() {
 
                         <ScrollReveal direction="up" delay={400}>
                             <h1 className="text-4xl md:text-8xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
-                                <AnimatedText text="Winson Baring" className="block" />
+                                <AnimatedText text={hero.name} className="block" />
                             </h1>
                         </ScrollReveal>
 
                         <ScrollReveal direction="up" delay={600}>
                             <div className="text-2xl md:text-4xl text-slate-600 dark:text-slate-400 mb-8 h-16">
                                 <TypewriterText
-                                    texts={["Software Developer", "AI Enthusiast", "Problem Solver", "Code Artist"]}
+                                    texts={hero.typewriterTexts}
                                     className="font-medium"
                                 />
                             </div>
@@ -82,9 +98,7 @@ export default function Portfolio() {
 
                         <ScrollReveal direction="up" delay={800}>
                             <p className="text-lg text-slate-700 dark:text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                                A passionate software developer based in Cebu, specializing in full-stack development and AI
-                                integration. Currently completing a Bachelor's in Computer Science at Cebu Institute of Technology
-                                University, with hands-on experience in modern web technologies and cloud services.
+                                {hero.description}
                             </p>
                         </ScrollReveal>
 
@@ -157,28 +171,30 @@ export default function Portfolio() {
                             <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl mb-8">
                                 <CardContent className="p-8">
                                     <div className="space-y-6">
-                                        <ScrollReveal direction="left" delay={400}>
-                                            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-                                                I'm a passionate{" "}
-                                                <span className="font-semibold text-blue-600 dark:text-blue-400">
-                                                    Full-Stack Software Developer
-                                                </span>{" "}
-                                                with expertise in modern web technologies and AI integration. Graduate of Bachelor of
-                                                Science in Computer Science at Cebu Institute of Technology University.
-                                            </p>
-                                        </ScrollReveal>
-
-                                        <ScrollReveal direction="right" delay={600}>
-                                            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-                                                My experience spans from developing{" "}
-                                                <span className="font-semibold text-purple-600 dark:text-purple-400">
-                                                    RSVP reservation systems
-                                                </span>{" "}
-                                                with Twilio integration to building{" "}
-                                                <span className="font-semibold text-green-600 dark:text-green-400">AI-powered chatbots</span>{" "}
-                                                using OpenAI APIs.
-                                            </p>
-                                        </ScrollReveal>
+                                        {about.aboutParagraphs.map((paragraph: string, idx: number) => (
+                                            <ScrollReveal key={idx} direction={idx % 2 === 0 ? "left" : "right"} delay={400 + idx * 200}>
+                                                <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+                                                    {paragraph}
+                                                </p>
+                                            </ScrollReveal>
+                                        ))}
+                                        {/* Achievements */}
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                            {about.achievements.map((achievement: {title: string; desc: string; delay: number}, index: number) => (
+                                                <ScrollReveal key={index} direction="up" delay={achievement.delay}>
+                                                    <div className="text-center p-4 rounded-lg hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-300">
+                                                        <Badge
+                                                            variant="secondary"
+                                                            className="mb-3 text-sm px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                                                        >
+                                                            <Sparkles className="w-3 h-3 mr-1" />
+                                                            {achievement.title}
+                                                        </Badge>
+                                                        <p className="text-sm text-slate-600 dark:text-slate-400">{achievement.desc}</p>
+                                                    </div>
+                                                </ScrollReveal>
+                                            ))}
+                                        </div>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -197,20 +213,16 @@ export default function Portfolio() {
                                         <ScrollReveal direction="up" delay={600}>
                                             <div>
                                                 <h3 className="font-semibold text-xl text-slate-900 dark:text-white mb-2">
-                                                    Bachelor of Science in Computer Science
+                                                    {about.education.degree}
                                                 </h3>
-                                                <p className="text-slate-600 dark:text-slate-400">Cebu Institute of Technology University</p>
+                                                <p className="text-slate-600 dark:text-slate-400">{about.education.institution}</p>
                                             </div>
                                         </ScrollReveal>
 
                                         <Separator className="bg-slate-200 dark:bg-slate-700" />
 
                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                            {[
-                                                { title: "CP-gifts Scholar", desc: "Academic scholarship recipient", delay: 800 },
-                                                { title: "GDSC CTO", desc: "Google Developers Student Club", delay: 900 },
-                                                { title: "Java Certified", desc: "Codechum Java Certification", delay: 1000 },
-                                            ].map((achievement, index) => (
+                                            {about.achievements.map((achievement, index) => (
                                                 <ScrollReveal key={index} direction="up" delay={achievement.delay}>
                                                     <div className="text-center p-4 rounded-lg hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-300">
                                                         <Badge
@@ -245,108 +257,57 @@ export default function Portfolio() {
                         </ScrollReveal>
                         <div className="flex flex-col gap-4">
                             <div className="space-y-8">
-                                <ScrollReveal direction="left" delay={200}>
-                                    <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
-                                        <CardHeader>
-                                            <div className="flex justify-between items-start mb-4">
-                                                <div>
-                                                    <CardTitle className="text-2xl text-slate-900 dark:text-white mb-2">
-                                                        Accenture
-                                                    </CardTitle>
-                                                    <CardDescription className="text-lg font-medium text-blue-600 dark:text-blue-400">
-                                                        Associate Software Engineer
-                                                    </CardDescription>
+                                {experience.map((job: any, index: number) => (
+                                    <ScrollReveal key={index} direction="left" delay={job.delay}>
+                                        <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+                                            <CardHeader>
+                                                <div className="flex justify-between items-start mb-4">
+                                                    <div>
+                                                        <CardTitle className="text-2xl text-slate-900 dark:text-white mb-2">
+                                                            {job.company}
+                                                        </CardTitle>
+                                                        <CardDescription className="text-lg font-medium text-blue-600 dark:text-blue-400">
+                                                            {job.role}
+                                                        </CardDescription>
+                                                    </div>
+                                                    <div className="text-right">
+                                                        {job.current && (
+                                                            <Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 mb-2">
+                                                                Current
+                                                            </Badge>
+                                                        )}
+                                                        <div className="text-slate-600 dark:text-slate-400 text-sm">{job.date}</div>
+                                                    </div>
                                                 </div>
-                                                <div className="text-right">
-                                                    <Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 mb-2">
-                                                        Current
-                                                    </Badge>
-                                                    <div className="text-slate-600 dark:text-slate-400 text-sm">June 2025 - Present</div>
-                                                </div>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <ScrollReveal direction="up" delay={400}>
-                                                <div className="flex flex-wrap gap-2 mb-6">
-                                                    {["Angular","React"].map((tech, index) => (
-                                                        <Badge
-                                                            key={index}
-                                                            variant="secondary"
-                                                            className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300 cursor-pointer"
-                                                        >
-                                                            {tech}
-                                                        </Badge>
+                                            </CardHeader>
+                                            <CardContent>
+                                                <ScrollReveal direction="up" delay={400}>
+                                                    <div className="flex flex-wrap gap-2 mb-6">
+                                                        {job.techs.map((tech: string, techIndex: number) => (
+                                                            <Badge
+                                                                key={techIndex}
+                                                                variant="secondary"
+                                                                className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300 cursor-pointer"
+                                                            >
+                                                                {tech}
+                                                            </Badge>
+                                                        ))}
+                                                    </div>
+                                                </ScrollReveal>
+                                                <ul className="space-y-4 text-slate-700 dark:text-slate-300">
+                                                    {job.tasks.map((item: string, responsibilityIndex: number) => (
+                                                        <ScrollReveal key={responsibilityIndex} direction="right" delay={600 + responsibilityIndex * 100}>
+                                                            <li className="flex items-start gap-3 hover:translate-x-2 transition-transform duration-300">
+                                                                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0" />
+                                                                <span>{item}</span>
+                                                            </li>
+                                                        </ScrollReveal>
                                                     ))}
-                                                </div>
-                                            </ScrollReveal>
-
-                                            <ul className="space-y-4 text-slate-700 dark:text-slate-300">
-                                                {[
-                                                    "Waiting for a project to be assigned"
-                                                ].map((item, index) => (
-                                                    <ScrollReveal key={index} direction="right" delay={600 + index * 100}>
-                                                        <li className="flex items-start gap-3 hover:translate-x-2 transition-transform duration-300">
-                                                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0" />
-                                                            <span>{item}</span>
-                                                        </li>
-                                                    </ScrollReveal>
-                                                ))}
-                                            </ul>
-                                        </CardContent>
-                                    </Card>
-                                </ScrollReveal>
-                            </div>
-                            <div className="space-y-8">
-                                <ScrollReveal direction="left" delay={200}>
-                                    <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
-                                        <CardHeader>
-                                            <div className="flex justify-between items-start mb-4">
-                                                <div>
-                                                    <CardTitle className="text-2xl text-slate-900 dark:text-white mb-2">
-                                                        Hatchit Solutions
-                                                    </CardTitle>
-                                                    <CardDescription className="text-lg font-medium text-blue-600 dark:text-blue-400">
-                                                        Software Developer
-                                                    </CardDescription>
-                                                </div>
-                                                <div className="text-right">
-                                                </div>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <ScrollReveal direction="up" delay={400}>
-                                                <div className="flex flex-wrap gap-2 mb-6">
-                                                    {["NestJS", "NextJS", "Twilio", "OpenAI", "Express", "Ngrok"].map((tech, index) => (
-                                                        <Badge
-                                                            key={index}
-                                                            variant="secondary"
-                                                            className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300 cursor-pointer"
-                                                        >
-                                                            {tech}
-                                                        </Badge>
-                                                    ))}
-                                                </div>
-                                            </ScrollReveal>
-
-                                            <ul className="space-y-4 text-slate-700 dark:text-slate-300">
-                                                {[
-                                                    "Developed a full-stack RSVP Reservation System using Next.js and Nest.js, integrating Twilio for automated calls and reservations",
-                                                    "Implemented dynamic multi-step forms with SSR, Server Actions, and Partial Prerendering for CMS-driven form creation",
-                                                    "Built a Retrieval-Augmented Generation (RAG) chatbot using OpenAI APIs for seamless file interaction",
-                                                    "Collaborated on policy reports and client communication to ensure business goal alignment",
-                                                    "Improved applications by integrating React Query and Zustand for better scalability",
-                                                ].map((item, index) => (
-                                                    <ScrollReveal key={index} direction="right" delay={600 + index * 100}>
-                                                        <li className="flex items-start gap-3 hover:translate-x-2 transition-transform duration-300">
-                                                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0" />
-                                                            <span>{item}</span>
-                                                        </li>
-                                                    </ScrollReveal>
-                                                ))}
-                                            </ul>
-                                        </CardContent>
-                                    </Card>
-                                </ScrollReveal>
+                                                </ul>
+                                            </CardContent>
+                                        </Card>
+                                    </ScrollReveal>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -367,93 +328,12 @@ export default function Portfolio() {
                         </ScrollReveal>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-[100%]">
-                            {[
-                                {
-                                    icon: Code,
-                                    title: "Resume AI ",
-                                    desc: "AI-Powered Resume Builder",
-                                    detail: "Create professional resumes effortlessly using AI. Transform your work experience into compelling career stories that impress employers.",
-                                    techs: ["supabase", "clerk", "next"],
-                                    date: "June 2025",
-                                    color: "blue",
-                                    github: "https://github.com/WinsonBaring/ResumeAI",
-                                    link: "https://resume-ai-olive-kappa.vercel.app/",
-                                    image: "",
-                                    delay: 200,
-
-                                },
-                                {
-                                    icon: Code,
-                                    title: "Rad AI",
-                                    desc: "Kidney Stone Detection",
-                                    detail: "RadAI is an AI-powered binary classification tool designed to assist in detecting kidney stones in ultrasound images. The model classifies images into two categories: Kidney Stone Detected or Normal Kidney.",
-                                    techs: ["google cloud run", "flask", "vercel", "ultralytics", "docker"],
-                                    date: "Feb 2025",
-                                    color: "blue",
-                                    github: "https://github.com/jmarcbalbada/radai-analyzer/commits/main/",
-                                    link: "https://radai-v2.vercel.app/",
-                                    delay: 200,
-                                },
-                                {
-                                    icon: Code,
-                                    title: "Jungle Guardians",
-                                    desc: "AI-Powered Animal Identifier",
-                                    detail: "Our WildCat Classifier is the perfect tool for nature enthusiasts and conservationists who want to experience the thrill of the jungle in a whole new way! ",
-                                    techs: ["streamlit", "github", "collabs"],
-                                    date: "May 2024",
-                                    color: "blue",
-                                    github: "https://github.com/WinsonBaring/Machine-Learning-Classification",
-                                    link: "https://identify-your-animal.streamlit.app/",
-                                    delay: 200,
-                                },
-
-                                {
-                                    icon: Code,
-                                    title: "Techno Dynamic V2",
-                                    desc: "AI-Powered Learning Platform",
-                                    // detail: "Created dynamic content improvement using linked list chaining and AI tokenizing",
-                                    detail: "Techno-Dynamic-Learning V2 is an enhanced LMS for technopreneurship courses, featuring dynamic content generation and FAQ-based suggestions.",
-                                    techs: ["Vite", "AI/LLM", "AWS S3", "Django", "Heroku"],
-                                    date: "Feb 2024",
-                                    color: "blue",
-                                    github: "https://github.com/jmarcbalbada/techno-dynamic-v2",
-                                    link: "https://technodynamic.vercel.app/login",
-                                    delay: 200,
-                                },
-                                {
-                                    icon: Smartphone,
-                                    title: "Laundirii",
-                                    desc: "Online Laundry Service Platform",
-                                    detail: "LaunDiri is a comprehensive laundry management application that facilitates the process between clients, couriers, and laundry shops",
-                                    techs: ["Android", "Java", "SQL Lite"],
-                                    date: "May 2023",
-                                    color: "purple",
-                                    github: "https://github.com/jmarcbalbada/laundirii",
-                                    link: "",
-                                    delay: 600,
-                                },
-                                {
-                                    icon: Code,
-                                    title: "Accenture Project",
-                                    desc: "A contact management system",
-                                    detail: "A contact management system that allows users to manage their contacts",
-                                    techs: ["Angular", "Supabase" ],
-                                    date: "July 2025",
-                                    color: "blue",
-                                    github: "https://github.com/WinsonBaring/Accenture-Project",
-                                    link: "https://github.com/WinsonBaring/Angular_CenterAI",
-                                    image: "",
-                                    delay: 200,
-
-                                },
-                            ].map((project, index) => (
+                            {projects.map((project: any, index: number) => (
                                 <ScrollReveal key={index} direction="up" delay={project.delay} >
                                     <Card className="flex flex-col justify-between h-full bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-105 shadow-2xl group cursor-pointer">
                                         <CardHeader>
                                             <div className="flex items-center justify-between mb-4">
-                                                <project.icon
-                                                    className={`w-10 h-10 text-${project.color}-600 dark:text-${project.color}-500 group-hover:scale-110 transition-transform duration-300`}
-                                                />
+                                                {/* Render icon dynamically if needed */}
                                                 <Badge className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700">
                                                     {project.date}
                                                 </Badge>
@@ -470,7 +350,7 @@ export default function Portfolio() {
                                                 {project.detail}
                                             </p>
                                             <div className="flex flex-wrap gap-2 mb-4">
-                                                {project.techs.map((tech, techIndex) => (
+                                                {project.techs.map((tech: string, techIndex: number) => (
                                                     <Badge
                                                         key={techIndex}
                                                         variant="secondary"
@@ -481,9 +361,7 @@ export default function Portfolio() {
                                                 ))}
                                             </div>
                                             <div className="flex flex-col gap-4">
-
                                                 {(project.link != "") && (
-
                                                     <MagneticButton
                                                         variant="outline"
                                                         size="sm"
@@ -505,9 +383,7 @@ export default function Portfolio() {
                                                         View Source Code
                                                     </MagneticButton>
                                                 )}
-
                                             </div>
-
                                         </CardContent>
                                     </Card>
                                 </ScrollReveal>
@@ -526,50 +402,12 @@ export default function Portfolio() {
                         </ScrollReveal>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                            {[
-                                {
-                                    icon: Code,
-                                    title: "Frontend",
-                                    skills: ["ReactJS", "Next.js", "Vite", "TypeScript", "HTML/CSS"],
-                                    color: "blue",
-                                    delay: 200,
-                                },
-                                {
-                                    icon: Database,
-                                    title: "Backend",
-                                    skills: ["NestJS", "Django", "Spring Boot", "Express", "REST API"],
-                                    color: "green",
-                                    delay: 400,
-                                },
-                                {
-                                    icon: BrainCircuit,
-                                    title: "Artificial Intelligence",
-                                    skills: ["ultralytics", "openai", "n8n", "vector db"],
-                                    color: "blue",
-                                    delay: 600,
-                                },
-                                {
-                                    icon: Cloud,
-                                    title: "Cloud & DevOps",
-                                    skills: ["AWS", "Vercel", "CloudFlare", "Nginx", "Docker", "Google", "Ultralytics"],
-                                    color: "purple",
-                                    delay: 600,
-                                },
-                                {
-                                    icon: Smartphone,
-                                    title: "Other",
-                                    skills: ["Android Dev", "AI/ML", "SQL", "Git", "Jira"],
-                                    color: "orange",
-                                    delay: 800,
-                                },
-                            ].map((category, index) => (
+                            {skills.categories.map((category: any, index: number) => (
                                 <ScrollReveal key={index} direction="up" delay={category.delay}>
                                     <Card className="h-full w-full flex-col justify-between bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-105 shadow-2xl group">
                                         <CardHeader>
                                             <CardTitle className="flex items-center gap-3 text-lg text-slate-900 dark:text-white">
-                                                <category.icon
-                                                    className={`w-6 h-6 text-${category.color}-600 dark:text-${category.color}-500 group-hover:scale-110 transition-transform duration-300`}
-                                                />
+                                                {/* Render icon dynamically if needed */}
                                                 <span className="group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                                                     {category.title}
                                                 </span>
@@ -577,7 +415,7 @@ export default function Portfolio() {
                                         </CardHeader>
                                         <CardContent className=" flex flex-grow items-center justify-center p-6">
                                             <div className="flex flex-wrap gap-2 justify-center">
-                                                {category.skills.map((skill, skillIndex) => (
+                                                {category.skills.map((skill: string, skillIndex: number) => (
                                                     <Badge
                                                         key={skillIndex}
                                                         variant="secondary"
@@ -600,7 +438,7 @@ export default function Portfolio() {
                                 </CardHeader>
                                 <CardContent>
                                     <div className="flex flex-wrap gap-3">
-                                        {["TypeScript", "JavaScript", "Python", "Java", "C#", "SQL"].map((lang, index) => (
+                                        {skills.languages.map((lang: string, index: number) => (
                                             <Badge
                                                 key={index}
                                                 className="text-sm px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:scale-110 transition-transform duration-300 cursor-pointer"
@@ -632,17 +470,14 @@ export default function Portfolio() {
                         </ScrollReveal>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                            {[
-                                { icon: Mail, title: "Email", info: "winsonbaring10@gmail.com", color: "blue", delay: 400 },
-                                { icon: Phone, title: "Phone", info: "(+63) 9760392357", color: "green", delay: 600 },
-                                { icon: MapPin, title: "Location", info: "Cebu City, Philippines", color: "red", delay: 800 },
-                            ].map((contact, index) => (
+                            {contactList.map((contact, index) => (
                                 <ScrollReveal key={index} direction="up" delay={contact.delay}>
                                     <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-105 shadow-2xl group cursor-pointer">
                                         <CardContent className="p-8 text-center">
-                                            <contact.icon
-                                                className={`w-10 h-10 text-${contact.color}-600 dark:text-${contact.color}-500 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
-                                            />
+                                            {/* Use dynamic icon */}
+                                            {contact.icon === "Mail" && <Mail className={`w-10 h-10 text-${contact.color}-600 dark:text-${contact.color}-500 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`} />}
+                                            {contact.icon === "Phone" && <Phone className={`w-10 h-10 text-${contact.color}-600 dark:text-${contact.color}-500 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`} />}
+                                            {contact.icon === "MapPin" && <MapPin className={`w-10 h-10 text-${contact.color}-600 dark:text-${contact.color}-500 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`} />}
                                             <h3 className="font-semibold text-lg mb-2 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                                                 {contact.title}
                                             </h3>
