@@ -243,62 +243,111 @@ export default function Portfolio() {
                                 <AnimatedText text="Work Experience" />
                             </h2>
                         </ScrollReveal>
-
-                        <div className="space-y-8">
-                            <ScrollReveal direction="left" delay={200}>
-                                <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
-                                    <CardHeader>
-                                        <div className="flex justify-between items-start mb-4">
-                                            <div>
-                                                <CardTitle className="text-2xl text-slate-900 dark:text-white mb-2">
-                                                    Hatchit Solutions
-                                                </CardTitle>
-                                                <CardDescription className="text-lg font-medium text-blue-600 dark:text-blue-400">
-                                                    Software Developer
-                                                </CardDescription>
-                                            </div>
-                                            <div className="text-right">
-                                                <Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 mb-2">
-                                                    Current
-                                                </Badge>
-                                                <div className="text-slate-600 dark:text-slate-400 text-sm">feb 2024 - feb 2025</div>
-                                            </div>
-                                        </div>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <ScrollReveal direction="up" delay={400}>
-                                            <div className="flex flex-wrap gap-2 mb-6">
-                                                {["NestJS", "NextJS", "Twilio", "OpenAI", "Express", "Ngrok"].map((tech, index) => (
-                                                    <Badge
-                                                        key={index}
-                                                        variant="secondary"
-                                                        className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300 cursor-pointer"
-                                                    >
-                                                        {tech}
+                        <div className="flex flex-col gap-4">
+                            <div className="space-y-8">
+                                <ScrollReveal direction="left" delay={200}>
+                                    <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+                                        <CardHeader>
+                                            <div className="flex justify-between items-start mb-4">
+                                                <div>
+                                                    <CardTitle className="text-2xl text-slate-900 dark:text-white mb-2">
+                                                        Accenture
+                                                    </CardTitle>
+                                                    <CardDescription className="text-lg font-medium text-blue-600 dark:text-blue-400">
+                                                        Associate Software Engineer
+                                                    </CardDescription>
+                                                </div>
+                                                <div className="text-right">
+                                                    <Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 mb-2">
+                                                        Current
                                                     </Badge>
-                                                ))}
+                                                    <div className="text-slate-600 dark:text-slate-400 text-sm">June 2025 - Present</div>
+                                                </div>
                                             </div>
-                                        </ScrollReveal>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <ScrollReveal direction="up" delay={400}>
+                                                <div className="flex flex-wrap gap-2 mb-6">
+                                                    {["Angular","React"].map((tech, index) => (
+                                                        <Badge
+                                                            key={index}
+                                                            variant="secondary"
+                                                            className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300 cursor-pointer"
+                                                        >
+                                                            {tech}
+                                                        </Badge>
+                                                    ))}
+                                                </div>
+                                            </ScrollReveal>
 
-                                        <ul className="space-y-4 text-slate-700 dark:text-slate-300">
-                                            {[
-                                                "Developed a full-stack RSVP Reservation System using Next.js and Nest.js, integrating Twilio for automated calls and reservations",
-                                                "Implemented dynamic multi-step forms with SSR, Server Actions, and Partial Prerendering for CMS-driven form creation",
-                                                "Built a Retrieval-Augmented Generation (RAG) chatbot using OpenAI APIs for seamless file interaction",
-                                                "Collaborated on policy reports and client communication to ensure business goal alignment",
-                                                "Improved applications by integrating React Query and Zustand for better scalability",
-                                            ].map((item, index) => (
-                                                <ScrollReveal key={index} direction="right" delay={600 + index * 100}>
-                                                    <li className="flex items-start gap-3 hover:translate-x-2 transition-transform duration-300">
-                                                        <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0" />
-                                                        <span>{item}</span>
-                                                    </li>
-                                                </ScrollReveal>
-                                            ))}
-                                        </ul>
-                                    </CardContent>
-                                </Card>
-                            </ScrollReveal>
+                                            <ul className="space-y-4 text-slate-700 dark:text-slate-300">
+                                                {[
+                                                    "Waiting for a project to be assigned"
+                                                ].map((item, index) => (
+                                                    <ScrollReveal key={index} direction="right" delay={600 + index * 100}>
+                                                        <li className="flex items-start gap-3 hover:translate-x-2 transition-transform duration-300">
+                                                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0" />
+                                                            <span>{item}</span>
+                                                        </li>
+                                                    </ScrollReveal>
+                                                ))}
+                                            </ul>
+                                        </CardContent>
+                                    </Card>
+                                </ScrollReveal>
+                            </div>
+                            <div className="space-y-8">
+                                <ScrollReveal direction="left" delay={200}>
+                                    <Card className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+                                        <CardHeader>
+                                            <div className="flex justify-between items-start mb-4">
+                                                <div>
+                                                    <CardTitle className="text-2xl text-slate-900 dark:text-white mb-2">
+                                                        Hatchit Solutions
+                                                    </CardTitle>
+                                                    <CardDescription className="text-lg font-medium text-blue-600 dark:text-blue-400">
+                                                        Software Developer
+                                                    </CardDescription>
+                                                </div>
+                                                <div className="text-right">
+                                                </div>
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <ScrollReveal direction="up" delay={400}>
+                                                <div className="flex flex-wrap gap-2 mb-6">
+                                                    {["NestJS", "NextJS", "Twilio", "OpenAI", "Express", "Ngrok"].map((tech, index) => (
+                                                        <Badge
+                                                            key={index}
+                                                            variant="secondary"
+                                                            className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform duration-300 cursor-pointer"
+                                                        >
+                                                            {tech}
+                                                        </Badge>
+                                                    ))}
+                                                </div>
+                                            </ScrollReveal>
+
+                                            <ul className="space-y-4 text-slate-700 dark:text-slate-300">
+                                                {[
+                                                    "Developed a full-stack RSVP Reservation System using Next.js and Nest.js, integrating Twilio for automated calls and reservations",
+                                                    "Implemented dynamic multi-step forms with SSR, Server Actions, and Partial Prerendering for CMS-driven form creation",
+                                                    "Built a Retrieval-Augmented Generation (RAG) chatbot using OpenAI APIs for seamless file interaction",
+                                                    "Collaborated on policy reports and client communication to ensure business goal alignment",
+                                                    "Improved applications by integrating React Query and Zustand for better scalability",
+                                                ].map((item, index) => (
+                                                    <ScrollReveal key={index} direction="right" delay={600 + index * 100}>
+                                                        <li className="flex items-start gap-3 hover:translate-x-2 transition-transform duration-300">
+                                                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0" />
+                                                            <span>{item}</span>
+                                                        </li>
+                                                    </ScrollReveal>
+                                                ))}
+                                            </ul>
+                                        </CardContent>
+                                    </Card>
+                                </ScrollReveal>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -382,6 +431,20 @@ export default function Portfolio() {
                                     github: "https://github.com/jmarcbalbada/laundirii",
                                     link: "",
                                     delay: 600,
+                                },
+                                {
+                                    icon: Code,
+                                    title: "Accenture Project",
+                                    desc: "A contact management system",
+                                    detail: "A contact management system that allows users to manage their contacts",
+                                    techs: ["Angular", "Supabase" ],
+                                    date: "July 2025",
+                                    color: "blue",
+                                    github: "https://github.com/WinsonBaring/Accenture-Project",
+                                    link: "https://github.com/WinsonBaring/Angular_CenterAI",
+                                    image: "",
+                                    delay: 200,
+
                                 },
                             ].map((project, index) => (
                                 <ScrollReveal key={index} direction="up" delay={project.delay} >
