@@ -32,6 +32,12 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+            <head>
+                <link
+                    rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/gh/dheereshagrwal/coloured-icons@1.9.4/src/app/ci.min.css"
+                />
+            </head>
             <body className={inter.className}>
                 <ThemeProvider
                     attribute="class"
