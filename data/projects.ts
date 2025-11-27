@@ -20,8 +20,8 @@ const projects = [
     techs: ["google cloud run", "flask", "vercel", "ultralytics", "docker"],
     date: "Feb 2025",
     color: "blue",
-    github: "https://github.com/jmarcbalbada/radai-analyzer/commits/main/",
-    link: "https://radai-v2.vercel.app/",
+    github: "https://github.com/WinsonBaring/kidney-stone-detection-2025",
+    link: "https://kidney-stone-detection-2025-m9bw3olkev4vmnhyb57kqy.streamlit.app",
     delay: 200
   },
   {
