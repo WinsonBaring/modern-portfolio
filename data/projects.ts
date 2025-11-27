@@ -8,7 +8,7 @@ const projects = [
     date: "June 2025",
     color: "blue",
     github: "https://github.com/WinsonBaring/ResumeAI",
-    link: "https://resume-ai-olive-kappa.vercel.app/",
+    link: "https://www.resumeai.buzz",
     image: "",
     delay: 200
   },
